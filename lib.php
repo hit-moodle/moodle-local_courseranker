@@ -39,7 +39,7 @@ function local_courseranker_cron(){
 
 function courseranker_extends_navigation(global_navigation $navigation) {
 
-    $courseranker = $navigation->add('本学期活跃课程排行榜', new moodle_url('/local/courseranker/'));
+    $courseranker = $navigation->add('课程排行榜', new moodle_url('/local/courseranker/'));
 
 }
 
