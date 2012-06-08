@@ -45,9 +45,12 @@ class local_courseranker_renderer extends plugin_renderer_base{
 			$cell4 = new html_table_cell();
 			$cell5 = new html_table_cell();
 			$cell6 = new html_table_cell();
-			
 			$cell1->text = $pos;
-			$cell2->text = 	'<a href="../../course/view.php?id='.$result['course_id'].'">'.$result['fullname'].'</a>';
+			if($pos <= $cr_config->highlight){
+				$cell2->text = '<a href="../../course/view.php?id='.$result['course_id'].' " style="background-color:yellow">'.$result['fullname'].'</a>';
+			}else{
+				$cell2->text = '<a href="../../course/view.php?id='.$result['course_id'].' ">'.$result['fullname'].'</a>';
+			}
 			$teacher_count=0;
 			foreach ($result['course_teacher'] as $teacher){
 				$teacher_name = $teacher['lastname'].' '.$teacher['firstname']."<br>";
@@ -85,7 +88,7 @@ class local_courseranker_renderer extends plugin_renderer_base{
 		$output = '';
 		$results = get_user_rank($course_id);
 		$table = new html_table();
-		$table->head = array('姓名', '活跃度');
+		$table->head = array('序号','姓名', '活跃度');
 		$pos =1;
 		foreach ($results as $result){
 			$user = new stdClass();
@@ -93,14 +96,17 @@ class local_courseranker_renderer extends plugin_renderer_base{
 			$user->lastname = $result['lastname'];
 			$user_fullname = fullname($user);
 			
+			$cell0 = new html_table_cell();
 			$cell1 = new html_table_cell();
 			$cell2 = new html_table_cell();
 			
+			$cell0->text = $pos;
 			$cell1->text = $result['lastname'].' '.$result['firstname'];
 			$cell1->text = '<a href="../../user/view.php?id='.$result['userid'].'">'.$user_fullname.' </a> ';
 			$cell2->text = $result['score'];
 
 			$row = new html_table_row();
+			$row->cells[] = $cell0;
 			$row->cells[] = $cell1;
 			$row->cells[] = $cell2;
 			$table->data[] = $row;
