@@ -47,7 +47,7 @@ class local_courseranker_renderer extends plugin_renderer_base{
 			$cell6 = new html_table_cell();
 			$cell1->text = $pos;
 			if($pos <= $cr_config->highlight){
-				$cell2->text = '<a href="../../course/view.php?id='.$result['course_id'].' " style="background-color:yellow">'.$result['fullname'].'</a>';
+				$cell2->text = '<a href="../../course/view.php?id='.$result['course_id'].' ">'.$result['fullname'].'</a>';
 			}else{
 				$cell2->text = '<a href="../../course/view.php?id='.$result['course_id'].' ">'.$result['fullname'].'</a>';
 			}
@@ -69,6 +69,9 @@ class local_courseranker_renderer extends plugin_renderer_base{
 			$cell6->text = '<a href="userrank.php?course_id='.$result['course_id'].'">'.'详细信息'.' </a> ';
 			
 			$row = new html_table_row();
+			if($pos <= $cr_config->highlight){
+                $row->style = 'background-color:yellow';
+            }
 			$row->cells[] = $cell1;
 			$row->cells[] = $cell2;
 			$row->cells[] = $cell3;
