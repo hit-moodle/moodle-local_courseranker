@@ -13,7 +13,7 @@ class cr_config{
 	
 	function __construct(){
 		$this->minimum_student_number = 10;
-		$this->minimum_ave_score = 1;
+		$this->minimum_ave_score = 20;
 		$this->student_role_id = '5';
 		$this->teacher_role_id = '3';
 
