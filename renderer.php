@@ -32,7 +32,7 @@ class local_courseranker_renderer extends plugin_renderer_base{
 		$output = '';
 		$results = get_course_table();
 		$table = new html_table();
-		$table->head = array('排名', '课程名称', '主讲教师', '学生数', '人均活跃度','详细排名');
+		$table->head = array('排名', '课程名称', '主讲教师', '学生数', '人均活跃度', '详细排名');
 		$pos =1;
 		foreach ($results as $result){
 			if($result['ave_score'] < $cr_config->minimum_ave_score || 
@@ -66,7 +66,7 @@ class local_courseranker_renderer extends plugin_renderer_base{
 			}
 			$cell4->text = $result['student_number'];
 			$cell5->text = $result['ave_score'];
-			$cell6->text = '<a href="userrank.php?course_id='.$result['course_id'].'">'.'详细信息'.' </a> ';
+			$cell6->text = '<a href="userrank.php?course_id='.$result['course_id'].'">'.'学生排名'.' </a> ';
 			
 			$row = new html_table_row();
 			if($pos <= $cr_config->highlight){
