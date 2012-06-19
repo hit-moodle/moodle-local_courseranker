@@ -91,7 +91,7 @@ class local_courseranker_renderer extends plugin_renderer_base{
 		$output = '';
 		$results = get_user_rank($course_id);
 		$table = new html_table();
-		$table->head = array('序号','姓名', '活跃度');
+		$table->head = array('排名', '姓名', '活跃度');
 		$pos =1;
 		foreach ($results as $result){
 			$user = new stdClass();
