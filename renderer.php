@@ -26,6 +26,10 @@ class local_courseranker_renderer extends plugin_renderer_base{
 	 * @return string. html of courses's score and rank.
 	 */
 	
+    function note() {
+        return $this->box('表中数据系根据学生活动自动计算得出。每小时刷新一次。');
+    }
+
 	function coursetable(){
 		global $cr_config;
 		

@@ -14,9 +14,9 @@ $PAGE->set_heading("$SITE->shortname: ".'本学期活跃课程排行榜');
 
 $renderer = $PAGE->get_renderer('local_courseranker');
 
-/*if(optional_param('flush',NULL,PARAM_INT) == 1){
+if(optional_param('flush',NULL,PARAM_INT) == 1){
 	flush_all_cache();
-}*/
+}
 
 echo '<style type="text/css">
 .r0{
@@ -31,6 +31,7 @@ $course_detail_id = optional_param('course_id_detail',NULL,PARAM_INT);
 $course_id = optional_param('course_id',NULL,PARAM_INT);
 $user_id = optional_param('user_id',NULL,PARAM_INT);
 
+echo $renderer->note();
 
 if($cr_config->cache['home'] && $output = is_cached($course_id, $user_id, $course_detail_id)){
 	echo $output;
